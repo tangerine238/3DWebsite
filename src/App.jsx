@@ -28,7 +28,7 @@ const App = () => {
   return (
     <>
       <Canvas>
-        <OrbitControls />
+        <OrbitControls minDistance={100} maxDistance={300}/>
         <Scene
           onSelectProject={setSelectedProject}
           onShowProjects={() => setShowProjects(true)}
