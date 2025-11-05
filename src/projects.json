@@ -1,0 +1,66 @@
+[
+    {
+        "title": "[Name Pending]",
+        "imageSrc": "Name.png",
+        "description": "[Name Pending] is a 3D platformer. Players face off against their friends, fighting to be the last man standing. Online multiplayer and CPU battles coming soon.",
+        "skills": ["Unreal Engine"],
+        "demo": ["https://youtu.be/wE5yIQZAJB0"],
+        "source": "https://tangerine238.itch.io/name-pending"
+    },
+    {
+        "title": "Witch, Wash, Wepeat",
+        "imageSrc": "Witch.png",
+        "description": "Use powerful spells and daring parkour to navigate the puzzling manor and gather laundry as quickly as possible in single-player or co-op.",
+        "skills": ["Unreal Engine", "Steam Advanced Sessions"],
+        "demo": ["https://youtu.be/s16QzUPi0wA"],
+        "source": "https://leifu.itch.io/witch-wash-repeat"
+    },
+    {
+        "title": "Voice Controlled Wheelchair",
+        "imageSrc": "wheelchair.png",
+        "description": "The voice controlled wheelchair aims to give people with more severe mobility issues, greater freedom in their day to day life.",
+        "skills": ["Python","Raspberry Pi", "Netcat", "Vosk", "3D Modelling", "Bash"],
+        "demo": ["https://www.youtube.com/watch?v=Ehrhy8XFH9U"],
+        "source": "https://github.com/raphael-64/voice-controlled-wheelchair"
+    },
+    {
+        "title": "Arachn0id",
+        "imageSrc": "Arachnoid.png",
+        "description": "Arachn0id is a third person survival shooter, made in Unreal Engine. The player acts as a spider, attempting to break free of the military compound it's held prisoner at. The player must navigate through levels, defeat enemies, and fight bosses, all while managing their heat bar.",
+        "skills": ["Unreal Engine"],
+        "demo": ["https://www.youtube.com/watch?v=PmJj_05cReA"],
+        "source": "https://djfox58.itch.io/arachn0id"
+    },
+    {
+        "title": "Touched",
+        "imageSrc": "Touched.png",
+        "description": "Don't get touched. Keep your player away from the various enemies by clicking and dragging. Some enemies can be destroyed by hovering over them and pressing space bar. Be careful though cause you may stun yourself if you miss.",
+        "skills": ["Unity 6", "C#"],
+        "demo": ["https://youtu.be/FU1TTGtzTek"],
+        "source": "https://tangerine238.itch.io/touched"
+    },
+    {
+        "title": "GenZMode",
+        "imageSrc": "GenZMode.png",
+        "description": "GenZMode makes navigating your banking app easy and efficient. Send money, and add various contacts with the press of a button",
+        "skills": ["React", "Typescript", "HTML", "CSS"],
+        "demo": ["https://youtu.be/hCyN1fXmtIY"],
+        "source": "https://github.com/tangerine238/GenZMode"
+    },
+    {
+        "title": "Kitchen Frenzy",
+        "imageSrc": "Kitchen.png",
+        "description": "This game was my introduction to Unity. I learned how base functions work, got used to scripting and much more. In the game, the player must create dishes to satisfy customer orders. Original tutorial is linked in the video description.",
+        "skills": ["Unity 6", "C#"],
+        "demo": ["https://www.youtube.com/watch?v=aaEWYY_Tlhc"],
+        "source": "https://github.com/tangerine238/KitchenFrenzy"
+    },  
+    {
+        "title": "Gravity Guy",
+        "imageSrc": "GravityGuy.png",
+        "description": "My first solo game in Unity! Based off one of my favourite childhood games, Gravity Guy. Credits to its creators for the inspiration",
+        "skills": ["Unity 6", "C#"],
+        "demo": ["https://youtu.be/Q6liLikwNCY"],
+        "source": "https://tangerine238.itch.io/gravity-guy"
+    }    
+]

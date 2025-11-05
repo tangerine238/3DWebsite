@@ -1,0 +1,39 @@
+{
+  "name": "react-three-vite",
+  "version": "2.0.0",
+  "description": "A simple React Three Fiber + Vite starter.",
+  "keywords": [
+    "r3f",
+    "react",
+    "three",
+    "vite",
+    "starter",
+    "react three fiber",
+    "sandbox"
+  ],
+  "author": "Benjamin Miles <talk@benjaminmiles.com> (https://github.com/benjaminmiles)",
+  "repository": "github:benjaminmiles/react-three-vite",
+  "license": "MIT",
+  "dependencies": {
+    "@react-three/drei": "10.7.6",
+    "@react-three/fiber": "9.3.0",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.3",
+    "vite": "^7.1.6"
+  },
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
