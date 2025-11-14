@@ -28,20 +28,9 @@ function HoverableMesh({ geometry, material, position, rotation, scale, onClick 
       position={position}
       rotation={rotation}
       scale={scale}
-      onClick={(e) => {
-        e.stopPropagation();
-        onClick?.(e);
-      }}
-      onPointerOver={(e) => {
-        e.stopPropagation();
-        setIsHovered(true);
-        document.body.style.cursor = "pointer";
-      }}
-      onPointerOut={(e) => {
-        e.stopPropagation();
-        setIsHovered(false);
-        document.body.style.cursor = "auto";
-      }}
+      onClick={(e) => { e.stopPropagation(); onClick?.(e); }}
+      onPointerOver={(e) => { e.stopPropagation(); setIsHovered(true); document.body.style.cursor = "pointer"; }}
+      onPointerOut={(e) => { e.stopPropagation(); setIsHovered(false); document.body.style.cursor = "auto"; }}
     >
       {mat && <primitive attach="material" object={mat} />}
     </mesh>
@@ -49,104 +38,132 @@ function HoverableMesh({ geometry, material, position, rotation, scale, onClick 
 }
 
 export function Model(props) {
-  const { scene } = useGLTF('/Website.glb')
-  const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
-  const { nodes, materials } = useGraph(clone)
+  const { scene } = useGLTF('/Website.glb');
+  const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
+  const { nodes, materials } = useGraph(clone);
+
   return (
     <>
-    <Stars radius={200} depth={50} count={15000} factor={15} fade speed={1} />
-    <ambientLight intensity={0.6} color="#ffffff" />
-    <group {...props} dispose={null}>
-      <pointLight intensity={100} decay={2} color="#0046ff" position={[0, -2.773, -29.645]} />
-      <spotLight intensity={500} angle={Math.PI / 4} penumbra={0.15} decay={2} color="#1cff00" position={[0, -7.74, 0]} rotation={[Math.PI / 2, 0, Math.PI]} target={nodes.Point001.target} >
-        <primitive object={nodes.Point001.target} position={[0, 0, -1]} />
-      </spotLight>
-      <pointLight intensity={100} decay={2} color="#cf0800" position={[16.508, -2.75, 26.085]} />
-      <PerspectiveCamera makeDefault={true} far={1000} near={0.1} fov={22.895} position={[-36.103, 53.767, 53.613]} rotation={[-0.825, -0.458, -0.446]}/>
-      <pointLight intensity={100} decay={2} color="#ff6a00" position={[-1.421, 3.65, -28.099]} rotation={[-Math.PI / 2, 0, 0]} />
-      <pointLight intensity={100} decay={2} color="#ff4800" position={[-1.046, 3.77, -29.65]} rotation={[-Math.PI / 2, 0, 0]} />
-      <pointLight intensity={100} decay={2} color="#00fff4" position={[-28.512, -2.369, 4.655]} rotation={[-Math.PI / 2, 0, 0]} />
-      <spotLight intensity={100} angle={0.771} penumbra={0.15} decay={2} position={[-0.514, 10.607, -29.589]} rotation={[-Math.PI / 2, 0, 0]} target={nodes.Spot.target}>
-        <primitive object={nodes.Spot.target} position={[0, 0, -1]} />
-      </spotLight>
-      <group position={[-0.2, 3.734, -28.089]} rotation={[0.34, 1.101, -0.305]} scale={1.064}>
-        <HoverableMesh geometry={nodes.Cube007.geometry} material={materials.Material} onClick={() => props.onSelectProject({ title: "Dreadnaught", imageSrc: "Dreadnaught.jpg", description: "Use a variety of tools to locate and track enemy ships.", skills: ["Unity 6", "C#"], demo: "https://matthewz80.itch.io/dreadnought", source: "https://matthewz80.itch.io/dreadnought", }) } />
-        <mesh geometry={nodes.Cube007_1.geometry} material={materials['Material.013']} />
-        <mesh geometry={nodes.Cube007_2.geometry} material={materials['Material.003']} />
-        <mesh geometry={nodes.Cube007_3.geometry} material={materials['Material.017']} />
-      </group>
-      <group position={[0, 2.471, -1.494]}>
+      <Stars radius={200} depth={50} count={15000} factor={15} fade speed={1} />
+      <ambientLight intensity={0.6} color="#ffffff" />
+
+      <group {...props} dispose={null}>
+        <pointLight intensity={100} color="#0046ff" position={[0, -2.773, -29.645]} />
+        <spotLight intensity={500} angle={Math.PI / 4} penumbra={0.15} position={[0, -7.74, 0]} rotation={[Math.PI / 2, 0, Math.PI]} color="#1cff00" target={nodes.Point001.target}>
+          <primitive object={nodes.Point001.target} position={[0, 0, -1]} />
+        </spotLight>
+        <pointLight intensity={100} color="#cf0800" position={[16.508, -2.75, 26.085]} />
+        <PerspectiveCamera makeDefault={true} far={1000} near={0.1} fov={22.895} position={[-36.103, 53.767, 53.613]} rotation={[-0.825, -0.458, -0.446]} />
+        <pointLight intensity={100} color="#ff6a00" position={[-1.421, 3.65, -28.099]} />
+        <pointLight intensity={100} color="#ff4800" position={[-1.046, 4.734, -29.65]} />
+        <pointLight intensity={100} color="#00fff4" position={[-28.512, -2.369, 4.655]} />
+        <spotLight intensity={100} angle={0.771} penumbra={0.15} position={[-0.514, 10.607, -29.589]} rotation={[-Math.PI / 2, 0, 0]} target={nodes.Spot.target}>
+          <primitive object={nodes.Spot.target} position={[0, 0, -1]} />
+        </spotLight>
+        {/* Dreadnaught */}
+        <group position={[-0.2, 3.734, -28.089]} rotation={[0.34, 1.101, -0.305]} scale={1.064}>
+          <HoverableMesh geometry={nodes.Cube007.geometry} material={materials.Material} onClick={() => props.onSelectProject?.({ title: "Dreadnaught", imageSrc: "Dreadnaught.jpg", description: "Use a variety of tools to locate and track enemy ships.", skills: ["Unity 6", "C#"], demo: "https://matthewz80.itch.io/dreadnought", source: "https://matthewz80.itch.io/dreadnought" })} />
+          <mesh geometry={nodes.Cube007_1.geometry} material={materials['Material.013']} />
+          <mesh geometry={nodes.Cube007_2.geometry} material={materials['Material.003']} />
+          <mesh geometry={nodes.Cube007_3.geometry} material={materials['Material.017']} />
+        </group>
+
         {/* Anvil */}
-        <HoverableMesh geometry={nodes.Cone.geometry} material={materials["Material.004"]} onClick={() => props.onShowProjects?.()} />
-        <mesh geometry={nodes.Cone_1.geometry} material={materials['Material.015']} />
-        <mesh geometry={nodes.Cone_2.geometry} material={materials['Material.014']} />
-        <mesh geometry={nodes.Cone_3.geometry} material={materials['Material.016']} />
-      </group>
-      <mesh geometry={nodes.Cone003.geometry} material={nodes.Cone003.material} position={[-2.714, 4.67, 0.245]} rotation={[0, -0.343, Math.PI]} scale={[14, 4, 14]} />
-      {/* Linkedin */}
-      <HoverableMesh geometry={nodes.Cone009.geometry} material={materials['Material.001']} position={[-2.714, 4.67, 0.245]} rotation={[0, -0.343, Math.PI]} scale={[14, 4, 14]} onClick={() => window.open("https://www.linkedin.com/in/stephen-tang-b8807325b/", "_blank")}/>
-      <mesh geometry={nodes.Cone010.geometry} material={materials['Material.007']} position={[-2.714, 4.67, 0.245]} rotation={[0, -0.343, Math.PI]} scale={[14, 4, 14]} />
-      <group position={[-2.714, 4.67, 0.245]} rotation={[0, -0.343, Math.PI]} scale={[14, 4, 14]}>
-        {/* Email */}
-        <HoverableMesh geometry={nodes.Cone011.geometry} material={nodes.Cone011.material} onClick={() => { window.location.href = "mailto:sw2tang@uwaterloo.ca"; }} />
-        <mesh geometry={nodes.Cone011_1.geometry} material={materials['Material.010']} />
-      </group>
-      <group position={[-2.714, 4.67, 0.245]} rotation={[0, -0.343, Math.PI]} scale={[14, 4, 14]}>
+        <group position={[0, 2.471, -1.494]}>
+          <HoverableMesh geometry={nodes.Cone.geometry} material={materials['Material.004']} onClick={() => props.onShowProjects?.()} />
+          <mesh geometry={nodes.Cone_1.geometry} material={materials['Material.015']} />
+          <mesh geometry={nodes.Cone_2.geometry} material={materials['Material.014']} />
+          <mesh geometry={nodes.Cone_3.geometry} material={materials['Material.016']} />
+        </group>
+
+        <mesh geometry={nodes.Torus004.geometry} material={materials['Material.030']} position={[-17.797, -0.402, -7.782]} rotation={[0, 0, -Math.PI / 2]} />
+        <mesh geometry={nodes.Torus001.geometry} material={materials['Material.032']} position={[7.78, -2.212, 15.921]} rotation={[0, 0, -Math.PI / 2]} />
+        <mesh geometry={nodes.Torus002.geometry} material={materials['Material.031']} position={[-0.563, 0.509, -14.649]} rotation={[0, 0, -Math.PI / 2]} />
+
+        <mesh geometry={nodes.Cone033.geometry} material={materials['Material.023']} position={[-29.007, 3.086, 4.763]} rotation={[0, -0.343, Math.PI]} scale={[7, 2, 7]} />
+        <group position={[-29.007, 3.086, 4.763]} rotation={[0, -0.343, Math.PI]} scale={[7, 2, 7]}>
+          <mesh geometry={nodes.Cone037_1.geometry} material={materials['Material.023']} />
+          <mesh geometry={nodes.Cone037_2.geometry} material={materials['Material.022']} />
+          <mesh geometry={nodes.Cone037_3.geometry} material={materials['Material.024']} />
+          <mesh geometry={nodes.Cone037_4.geometry} material={materials['Material.029']} />
+          { /* About Me */}
+          <HoverableMesh geometry={nodes.Cone037_5.geometry} material={materials['Material.026']} onClick={() => props.onShowAbout?.()}/>
+          <mesh geometry={nodes.Cone037_6.geometry} material={materials['Material.028']} />
+          <mesh geometry={nodes.Cone037_7.geometry} material={materials['Material.027']} />
+          <mesh geometry={nodes.Cone037_8.geometry} material={materials['tone.001']} />
+          <mesh geometry={nodes.Cone037_9.geometry} material={materials['black_wood.001']} />
+          <mesh geometry={nodes.Cone037_10.geometry} material={materials['white_plas.001']} />
+          <mesh geometry={nodes.Cone037_11.geometry} material={materials['wood.001']} />
+          <mesh geometry={nodes.Cone037_12.geometry} material={materials['metall.001']} />
+          <mesh geometry={nodes.Cone037_13.geometry} material={materials['metall_with_black.001']} />
+          <mesh geometry={nodes.Cone037_14.geometry} material={materials['metall_3.001']} />
+          <mesh geometry={nodes.Cone037_15.geometry} material={materials['dark_wood_1.001']} />
+          <mesh geometry={nodes.Cone037_16.geometry} material={materials['dark_wood.001']} />
+          <mesh geometry={nodes.Cone037_17.geometry} material={materials['wood_1.001']} />
+          <mesh geometry={nodes.Cone037_18.geometry} material={materials['metall_1.001']} />
+          <mesh geometry={nodes.Cone037_19.geometry} material={materials['black.001']} />
+          <mesh geometry={nodes.Cone037_20.geometry} material={materials['back_metall.001']} />
+          <mesh geometry={nodes.Cone037_21.geometry} material={materials['volume.001']} />
+          <mesh geometry={nodes.Cone037_22.geometry} material={materials['handle.000']} />
+          <mesh geometry={nodes.Cone037_23.geometry} material={materials['frame.000']} />
+          <mesh geometry={nodes.Cone037_24.geometry} material={materials['stringing.000']} />
+          <mesh geometry={nodes.Cone037_25.geometry} material={materials['Material.020']} />
+          <mesh geometry={nodes.Cone037_26.geometry} material={materials['Material.019']} />
+        </group>
+        <mesh geometry={nodes.Cone015.geometry} material={materials['Material.023']} position={[-29.007, 3.086, 4.763]} rotation={[0, -0.343, Math.PI]} scale={[7, 2, 7]} />
+        <mesh geometry={nodes.Cone016.geometry} material={materials['Material.012']} position={[-29.007, 3.086, 4.763]} rotation={[0, -0.343, Math.PI]} scale={[7, 2, 7]} />
+
+        <group position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]}>
+          <mesh geometry={nodes.Cone064.geometry} material={materials['Material.005']} />
+          <mesh geometry={nodes.Cone064_1.geometry} material={materials['Material.007']} />
+          <mesh geometry={nodes.Cone064_2.geometry} material={materials['Material.008']} />
+          <mesh geometry={nodes.Cone064_3.geometry} material={materials['Material.006']} />
+        </group>
+        <group position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]}>
+          <mesh geometry={nodes.Cone068_1.geometry} material={materials['Material.011']} />
+        </group>
+        <mesh geometry={nodes.Cone009.geometry} material={materials['Material.010']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <group position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]}>
+          <mesh geometry={nodes.Cone071_1.geometry} material={materials['SVGMat.008']} />
+        </group>
+        <mesh geometry={nodes.Cone013.geometry} material={materials['Material.001']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone002.geometry} material={nodes.Cone002.material} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone017.geometry} material={materials['Material.009']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone019.geometry} material={materials['Material.009']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone020.geometry} material={materials['Material.009']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone021.geometry} material={materials['Material.009']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone022.geometry} material={materials['Material.009']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone023.geometry} material={materials['Material.009']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone024.geometry} material={materials['Material.009']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone025.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone026.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone031.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone032.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone034.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone035.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone036.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone037.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone038.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone039.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone040.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone041.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        <mesh geometry={nodes.Cone042.geometry} material={materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+
+        {/* Linkedin */}
+        <HoverableMesh geometry={nodes.Cone013.geometry} material={materials['Material.001']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} onClick={() => window.open('https://www.linkedin.com/in/stephen-tang-b8807325b/', '_blank')} />
         {/* Resume */}
-        <HoverableMesh geometry={nodes.Cone012_1.geometry} material={nodes.Cone012_1.material}
-            onClick={() => { const link = document.createElement("a");
+        <HoverableMesh geometry={nodes.Cone068.geometry} material={nodes.Cone068?.material ?? materials['Material.011']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} onClick={() => { const link = document.createElement("a");
               link.href = "/Resume.pdf";
               link.download = "Stephen Tang's Resume";
               document.body.appendChild(link);
               link.click();
               document.body.removeChild(link);
-            }}
-          />
-        <mesh geometry={nodes.Cone012_2.geometry} material={materials['Material.011']} />
+            }} />
+        {/* GitHub */}
+        <HoverableMesh geometry={nodes.Cone071.geometry} material={materials['Material.033']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} onClick={() => window.open('https://github.com/tangerine238', '_blank')} />
       </group>
-      <mesh geometry={nodes.Torus004.geometry} material={materials['Material.030']} position={[-17.797, -0.402, -7.782]} rotation={[0, 0, -Math.PI / 2]} />
-      <mesh geometry={nodes.Torus001.geometry} material={materials['Material.032']} position={[7.78, -2.212, 15.921]} rotation={[0, 0, -Math.PI / 2]} />
-      <mesh geometry={nodes.Torus002.geometry} material={materials['Material.031']} position={[-0.563, 0.509, -14.649]} rotation={[0, 0, -Math.PI / 2]} />
-      <mesh geometry={nodes.Cone001.geometry} material={materials['Material.008']} position={[-2.714, 4.67, 0.245]} rotation={[0, -0.343, Math.PI]} scale={[14, 4, 14]} />
-      <mesh geometry={nodes.Cone002.geometry} material={materials['Material.006']} position={[-2.714, 4.67, 0.245]} rotation={[0, -0.343, Math.PI]} scale={[14, 4, 14]} />
-      <mesh geometry={nodes.Cone004.geometry} material={materials['Material.005']} position={[-2.714, 4.67, 0.245]} rotation={[0, -0.343, Math.PI]} scale={[14, 4, 14]} />
-      <mesh geometry={nodes.Cone006.geometry} material={materials['Material.009']} position={[-2.714, 4.67, 0.245]} rotation={[0, -0.343, Math.PI]} scale={[14, 4, 14]} />
-      <group position={[-29.007, 3.086, 4.763]} rotation={[0, -0.343, Math.PI]} scale={[7, 2, 7]}>
-        <HoverableMesh geometry={nodes.Cone010_1.geometry} material={materials['Material.026']} onClick={() => props.onShowAbout?.()}/>
-        <mesh geometry={nodes.Cone010_2.geometry} material={materials['Material.029']} />
-        <mesh geometry={nodes.Cone010_3.geometry} material={materials['white_plas.001']} />
-        <mesh geometry={nodes.Cone010_4.geometry} material={materials['black_wood.001']} />
-        <mesh geometry={nodes.Cone010_5.geometry} material={materials['black.001']} />
-        <mesh geometry={nodes.Cone010_6.geometry} material={materials['wood.001']} />
-        <mesh geometry={nodes.Cone010_7.geometry} material={materials['dark_wood_1.001']} />
-        <mesh geometry={nodes.Cone010_8.geometry} material={materials['metall.001']} />
-        <mesh geometry={nodes.Cone010_9.geometry} material={materials['back_metall.001']} />
-        <mesh geometry={nodes.Cone010_10.geometry} material={materials['metall_with_black.001']} />
-        <mesh geometry={nodes.Cone010_11.geometry} material={materials['dark_wood.001']} />
-        <mesh geometry={nodes.Cone010_12.geometry} material={materials['wood_1.001']} />
-        <mesh geometry={nodes.Cone010_13.geometry} material={materials['metall_1.001']} />
-        <mesh geometry={nodes.Cone010_14.geometry} material={materials['volume.001']} />
-        <mesh geometry={nodes.Cone010_15.geometry} material={materials['tone.001']} />
-        <mesh geometry={nodes.Cone010_16.geometry} material={materials['metall_3.001']} />
-        <mesh geometry={nodes.Cone010_17.geometry} material={materials['handle.000']} />
-        <mesh geometry={nodes.Cone010_18.geometry} material={materials['frame.000']} />
-        <mesh geometry={nodes.Cone010_19.geometry} material={materials['stringing.000']} />
-        <mesh geometry={nodes.Cone010_20.geometry} material={materials['Material.020']} />
-        <mesh geometry={nodes.Cone010_21.geometry} material={materials['Material.019']} />
-        <mesh geometry={nodes.Cone010_22.geometry} material={materials['Material.022']} />
-        <mesh geometry={nodes.Cone010_23.geometry} material={materials['Material.023']} />
-        <mesh geometry={nodes.Cone010_24.geometry} material={materials['Material.024']} />
-        <mesh geometry={nodes.Cone010_25.geometry} material={materials['Material.027']} />
-        <mesh geometry={nodes.Cone010_26.geometry} material={materials['Material.028']} />
-      </group>
-      <group position={[-6.458, 4.81, 6.037]} rotation={[0, -0.931, 0]} scale={[2.44, 1.47, 2.44]}>
-        { /* Github */}
-        <HoverableMesh geometry={nodes.Sphere005.geometry} material={materials['Material.033']} onClick={() => window.open("https://github.com/tangerine238", "_blank")}/>
-        <mesh geometry={nodes.Sphere005_1.geometry} material={materials['SVGMat.008']} />
-      </group>
-    </group>
-  </>
+    </>
   );
 }
 
-useGLTF.preload('/Website.glb')
+useGLTF.preload('/Website.glb');
