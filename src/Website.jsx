@@ -110,6 +110,7 @@ export function Model(props) {
           <mesh geometry={nodes.Cone037_25.geometry} material={materials['Material.020']} />
           <mesh geometry={nodes.Cone037_26.geometry} material={materials['Material.019']} />
         </group>
+        
         <mesh geometry={nodes.Cone015.geometry} material={materials['Material.023']} position={[-29.007, 3.086, 4.763]} rotation={[0, -0.343, Math.PI]} scale={[7, 2, 7]} />
         <mesh geometry={nodes.Cone016.geometry} material={materials['Material.012']} position={[-29.007, 3.086, 4.763]} rotation={[0, -0.343, Math.PI]} scale={[7, 2, 7]} />
 
@@ -127,7 +128,9 @@ export function Model(props) {
           <mesh geometry={nodes.Cone071_1.geometry} material={materials['SVGMat.008']} />
         </group>
         <mesh geometry={nodes.Cone013.geometry} material={materials['Material.001']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
-        <mesh geometry={nodes.Cone002.geometry} material={nodes.Cone002.material} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
+        {/* Email */}
+        <HoverableMesh geometry={nodes.Cone002.geometry} material={nodes.Cone002.material} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} onClick={() => { window.location.href = "mailto:sw2tang@uwaterloo.ca"; }}/>
+
         <mesh geometry={nodes.Cone017.geometry} material={materials['Material.009']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
         <mesh geometry={nodes.Cone019.geometry} material={materials['Material.009']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
         <mesh geometry={nodes.Cone020.geometry} material={materials['Material.009']} position={[1.468, 4.67, 0.245]} rotation={[Math.PI, 0.699, 0]} scale={[14, 4, 14]} />
