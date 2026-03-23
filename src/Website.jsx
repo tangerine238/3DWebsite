@@ -62,7 +62,7 @@ export function Model(props) {
         </spotLight>
         {/* Dreadnaught */}
         <group position={[-0.2, 3.734, -28.089]} rotation={[0.34, 1.101, -0.305]} scale={1.064}>
-          <HoverableMesh geometry={nodes.Cube007.geometry} material={materials.Material} onClick={() => props.onSelectProject?.({ title: "Dreadnaught", imageSrc: "Dreadnaught.jpg", description: "Use a variety of tools to locate and track enemy ships.", skills: ["Unity 6", "C#"], demo: "https://matthewz80.itch.io/dreadnought", source: "https://matthewz80.itch.io/dreadnought" })} />
+          <HoverableMesh geometry={nodes.Cube007.geometry} material={materials.Material} onClick={() => props.onSelectProject?.({ title: "Dreadnaught", imageSrc: "Dreadnaught.jpg", description: "Use a variety of tools to locate and track enemy ships.", skills: ["Unity 6", "C#"], demo: "https://www.youtube.com/watch?v=96PnWLBEmp0", source: "https://matthewz80.itch.io/dreadnought" })} />
           <mesh geometry={nodes.Cube007_1.geometry} material={materials['Material.013']} />
           <mesh geometry={nodes.Cube007_2.geometry} material={materials['Material.003']} />
           <mesh geometry={nodes.Cube007_3.geometry} material={materials['Material.017']} />
