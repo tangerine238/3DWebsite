@@ -14,7 +14,7 @@ const AboutPopup = ({ onClose }) => {
           <div className="about-text">
             <h1 className="about-title">Hi, I'm Stephen Tang</h1>
             <p className="about-description">
-              I'm currently a second-year Software Engineering student at the
+              I'm currently a third-year Software Engineering student at the
               University of Waterloo. I'm interested in technology and business.
               I'm specifically interested in game development, artificial
               intelligence, and economics.
