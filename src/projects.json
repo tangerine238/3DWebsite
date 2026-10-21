@@ -1,5 +1,13 @@
 [
     {
+        "title": "Dune Drifter",
+        "imageSrc": "Dune.png",
+        "description": "Dune Drifter is an endless shooter where you drive across the dunes escaping a massive dust storm. You are trapped inside a canyon, so the only option is forward. Blast a path through hordes of orcs using your trusty machine pistol and boomstick! Nothing can stop the Drifter.",
+        "skills": ["Unity 6"],
+        "demo": ["https://djfox58.itch.io/dune-drifter"],
+        "source": "https://djfox58.itch.io/dune-drifter"
+    },
+    {
         "title": "[Name Pending]",
         "imageSrc": "Name.png",
         "description": "[Name Pending] is a 3D platformer. Players face off against their friends, fighting to be the last man standing. Online multiplayer and CPU battles coming soon.",
