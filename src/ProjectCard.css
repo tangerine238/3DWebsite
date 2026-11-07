@@ -21,7 +21,7 @@
   padding: 18px 24px;
   max-width: 345px;
   color: var(--color-text);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   position: relative;
   text-align: center;
   animation: fadeIn 0.2s ease-in-out;
@@ -94,6 +94,7 @@
 
 .link {
   text-decoration: none;
+  font-family: "Poppins", sans-serif;
   color: var(--color-text);
   font-size: 22px;
   font-weight: 700;

@@ -17,6 +17,7 @@ const skillColors = {
   "CSS": "#2965F1",
   "Python": "#3776AB",
   "C#": "#512BD4",
+  "FastAPI": "#009688",
 };
 
 const ProjectCard = ({ project, onClose }) => {
@@ -52,22 +53,26 @@ const ProjectCard = ({ project, onClose }) => {
         </ul>
 
         <div className="links">
-          <a
-            href={project.demo}
-            className="link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Demo
-          </a>
-          <a
-            href={project.source}
-            className="link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Source
-          </a>
+          {project.demo && (
+            <a
+              href={project.demo}
+              className="link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Demo
+            </a>
+          )}
+          {project.source && (
+            <a
+              href={project.source}
+              className="link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source
+            </a>
+          )}
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@
   flex-direction: column;
   position: relative;
   color: var(--color-text);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   text-align: center;
   width: 75vw;
   max-width: 1100px;
@@ -122,6 +122,7 @@
 
 .link {
   text-decoration: none;
+  font-family: "Poppins", sans-serif;
   color: var(--color-text);
   font-size: 18px;
   font-weight: 700;

@@ -8,4 +8,6 @@
 
     /* Fonts */
     --font-robot: "Roboto";
+    --font-body: "Inter", sans-serif;
+    --font-display: "Plus Jakarta Sans", sans-serif;
 }

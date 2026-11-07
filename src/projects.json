@@ -1,11 +1,20 @@
 [
     {
+        "title": "UWBC Website",
+        "imageSrc": "UWBC.png",
+        "description": "The official UWBC website. Functionalities including generating courts for sessions, creating and modifying player data, and more.",
+        "skills": ["Python", "React", "Typescript", "FastAPI"],
+        "source": "https://uwbc.onrender.com/",
+        "showInGallery": false
+    },
+    {
         "title": "Dune Drifter",
         "imageSrc": "Dune.png",
         "description": "Dune Drifter is an endless shooter where you drive across the dunes escaping a massive dust storm. You are trapped inside a canyon, so the only option is forward. Blast a path through hordes of orcs using your trusty machine pistol and boomstick! Nothing can stop the Drifter.",
         "skills": ["Unity 6", "C#"],
         "demo": ["https://djfox58.itch.io/dune-drifter"],
-        "source": "https://djfox58.itch.io/dune-drifter"
+        "source": "https://djfox58.itch.io/dune-drifter",
+        "showInGallery": false
     },
     {
         "title": "[Name Pending]",

@@ -18,6 +18,7 @@ const skillColors = {
   "CSS": "#2965F1",
   "Python": "#3776AB",
   "C#": "#512BD4",
+  "FastAPI": "#009688",
 };
 
 const ProjectGalleryPopup = ({ onClose }) => {
@@ -34,7 +35,8 @@ const ProjectGalleryPopup = ({ onClose }) => {
         <h2 className="popup-title">Projects</h2>
 
         <div className="project-list">
-          {projects.map((project, id) => (
+          {/* Projects with showInGallery: false are only reachable from their island */}
+          {projects.filter((project) => project.showInGallery !== false).map((project, id) => (
             <div key={id} className="project-card">
               <img
                 src={getImageURL(project.imageSrc)}
@@ -60,22 +62,26 @@ const ProjectGalleryPopup = ({ onClose }) => {
               </ul>
 
               <div className="links">
-                <a
-                  href={project.demo}
-                  className="link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Demo
-                </a>
-                <a
-                  href={project.source}
-                  className="link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Source
-                </a>
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    className="link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Demo
+                  </a>
+                )}
+                {project.source && (
+                  <a
+                    href={project.source}
+                    className="link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Source
+                  </a>
+                )}
               </div>
             </div>
           ))}
