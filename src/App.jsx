@@ -5,6 +5,7 @@ import { Model } from "./Website";
 import ProjectPopup from "./ProjectCard";
 import ProjectGalleryPopup from "./ProjectGalleryPopup";
 import AboutPopup from "./AboutPopup";
+import LoadingScreen from "./LoadingScreen";
 
 const Scene = ({ onSelectProject, onShowProjects, onShowAbout }) => {
   return (
@@ -37,6 +38,8 @@ const App = () => {
           onShowAbout={() => setShowAbout(true)}
         />
       </Canvas>
+
+      <LoadingScreen />
 
       {selectedProject && (
         <ProjectPopup
