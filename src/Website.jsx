@@ -46,7 +46,8 @@ function HoverableMesh({ geometry, material, position, rotation, scale, onClick 
 }
 
 export function Model(props) {
-  const { scene } = useGLTF('/WebsiteNov6.glb');
+  // Draco-compressed copy of models/WebsiteNov6.glb; the decoder is served from public/draco
+  const { scene } = useGLTF('/WebsiteNov6-compressed.glb', '/draco/');
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
   const { nodes, materials } = useGraph(clone);
   // The new .glb has no lights exported, so spotlight targets are created here
@@ -207,4 +208,4 @@ export function Model(props) {
   );
 }
 
-useGLTF.preload('/WebsiteNov6.glb');
+useGLTF.preload('/WebsiteNov6-compressed.glb', '/draco/');
